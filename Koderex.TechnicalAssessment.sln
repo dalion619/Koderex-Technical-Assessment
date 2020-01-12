@@ -1,8 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4FAAB2E2-EF96-43C6-9EE5-BF5667B73210}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8D367795-CD3C-4BB0-AB73-CB5A9FEC80C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koderex.TechnicalAssessment.VendingMachine", "src\Koderex.TechnicalAssessment.VendingMachine\Koderex.TechnicalAssessment.VendingMachine.csproj", "{70D7FCF5-5EDA-43FE-AF48-28D11965550F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{C0D65253-F3D2-4929-9CB2-94BC2E021DBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{70D7FCF5-5EDA-43FE-AF48-28D11965550F} = {4FAAB2E2-EF96-43C6-9EE5-BF5667B73210}
+		{C0D65253-F3D2-4929-9CB2-94BC2E021DBA} = {8D367795-CD3C-4BB0-AB73-CB5A9FEC80C9}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70D7FCF5-5EDA-43FE-AF48-28D11965550F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70D7FCF5-5EDA-43FE-AF48-28D11965550F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70D7FCF5-5EDA-43FE-AF48-28D11965550F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70D7FCF5-5EDA-43FE-AF48-28D11965550F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0D65253-F3D2-4929-9CB2-94BC2E021DBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0D65253-F3D2-4929-9CB2-94BC2E021DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0D65253-F3D2-4929-9CB2-94BC2E021DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0D65253-F3D2-4929-9CB2-94BC2E021DBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

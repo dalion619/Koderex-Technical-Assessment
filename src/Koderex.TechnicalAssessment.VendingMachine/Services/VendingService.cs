@@ -39,6 +39,22 @@ namespace Koderex.TechnicalAssessment.VendingMachine.Services
                 throw new Exception($"{nameof(changeAmount)} value is negative.");
             }
 
+            var nonFloatingChangeAmount = changeAmount * 100;
+            for (int c = 0; c < coinDenominations.Length; c++)
+            {
+                var coin = coinDenominations[c];
+                while(nonFloatingChangeAmount >= coin)
+                {
+                    coins.Add(coin);
+                    nonFloatingChangeAmount -= coin;
+                }
+
+                if (nonFloatingChangeAmount == 0)
+                {
+                    break;
+                }
+            }
+            
 
             return coins;
         }

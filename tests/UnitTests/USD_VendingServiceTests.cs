@@ -45,7 +45,9 @@ namespace UnitTests
         {
             var coins = _vendingService.CalculateChange(1.35m, 2);
             var changeAmount = coins.Sum();
-            Assert.Equal(0.65m, changeAmount); 
+            Assert.NotEmpty(coins);
+            Assert.Equal(65, changeAmount);
+            Assert.Equal(4, coins.Count);
         }
     }
 }

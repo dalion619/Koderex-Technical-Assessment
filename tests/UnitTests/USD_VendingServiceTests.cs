@@ -9,45 +9,47 @@ namespace UnitTests
 {
     public class USD_VendingServiceTests
     {
+        public USD_VendingServiceTests() => _vendingService = new VendingService(
+            currencyConfig: new CurrencyConfigService(coinDenominations: CurrencyCoinDenominationConstants.USD));
+
         private readonly IVendingService _vendingService;
-        public USD_VendingServiceTests()
-        {
-            _vendingService = new VendingService(new CurrencyConfigService(CurrencyCoinDenominationConstants.USD));
-        }
-        
-        [Fact]
-        public void ThrowsExWithInvalidPurchaseAmount()
-        {
-            Assert.Throws<Exception>(() => _vendingService.CalculateChange(0, 1));
-        }
-        
-        [Fact]
-        public void ThrowsExWithInvalidTenderAmount()
-        {
-            Assert.Throws<Exception>(() => _vendingService.CalculateChange(1, 0));
-        }
-        
+
         [Fact]
         public void ThrowsExWithInvalidChangeAmount()
         {
-            Assert.Throws<Exception>(() => _vendingService.CalculateChange(2, 1));
+            Assert.Throws<Exception>(
+                testCode: () => _vendingService.CalculateChange(purchaseAmount: 2, tenderAmount: 1));
         }
-        
+
         [Fact]
-        public void ValidNoChangeNoCoins()
+        public void ThrowsExWithInvalidPurchaseAmount()
         {
-            var coins = _vendingService.CalculateChange(1, 1);
-            Assert.Empty(coins);
+            Assert.Throws<Exception>(
+                testCode: () => _vendingService.CalculateChange(purchaseAmount: 0, tenderAmount: 1));
         }
-        
+
+        [Fact]
+        public void ThrowsExWithInvalidTenderAmount()
+        {
+            Assert.Throws<Exception>(
+                testCode: () => _vendingService.CalculateChange(purchaseAmount: 1, tenderAmount: 0));
+        }
+
         [Fact]
         public void ValidCoinsForChange()
         {
-            var coins = _vendingService.CalculateChange(1.35m, 2);
+            var coins = _vendingService.CalculateChange(purchaseAmount: 1.35m, tenderAmount: 2);
             var changeAmount = coins.Sum();
-            Assert.NotEmpty(coins);
-            Assert.Equal(65, changeAmount);
-            Assert.Equal(4, coins.Count);
+            Assert.NotEmpty(collection: coins);
+            Assert.Equal(expected: 65, actual: changeAmount);
+            Assert.Equal(expected: 4, actual: coins.Count);
+        }
+
+        [Fact]
+        public void ValidNoChangeNoCoins()
+        {
+            var coins = _vendingService.CalculateChange(purchaseAmount: 1, tenderAmount: 1);
+            Assert.Empty(collection: coins);
         }
     }
 }

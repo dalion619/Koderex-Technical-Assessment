@@ -11,11 +11,11 @@ namespace UnitTests
             var gbp = CurrencyCoinDenominationConstants.GBP;
             var usd = CurrencyCoinDenominationConstants.USD;
 
-            Assert.NotNull(gbp);
-            Assert.NotNull(usd);
+            Assert.NotNull(@object: gbp);
+            Assert.NotNull(@object: usd);
 
-            Assert.NotEmpty(gbp);
-            Assert.NotEmpty(usd);
+            Assert.NotEmpty(collection: gbp);
+            Assert.NotEmpty(collection: usd);
         }
     }
 }

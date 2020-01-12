@@ -8,10 +8,7 @@ namespace Koderex.TechnicalAssessment.VendingMachine.Services
     {
         private readonly ICurrencyConfigService _currencyConfig;
 
-        public VendingService(ICurrencyConfigService currencyConfig)
-        {
-            _currencyConfig = currencyConfig;
-        }
+        public VendingService(ICurrencyConfigService currencyConfig) => _currencyConfig = currencyConfig;
 
 
         public List<int> CalculateChange(decimal purchaseAmount, decimal tenderAmount)
@@ -20,12 +17,12 @@ namespace Koderex.TechnicalAssessment.VendingMachine.Services
             var coins = new List<int>();
             if (purchaseAmount <= 0)
             {
-                throw new Exception($"{nameof(purchaseAmount)} value is zero or less.");
+                throw new Exception(message: $"{nameof(purchaseAmount)} value is zero or less.");
             }
 
             if (tenderAmount <= 0)
             {
-                throw new Exception($"{nameof(tenderAmount)} value is zero or less.");
+                throw new Exception(message: $"{nameof(tenderAmount)} value is zero or less.");
             }
 
             var changeAmount = tenderAmount - purchaseAmount;
@@ -36,16 +33,16 @@ namespace Koderex.TechnicalAssessment.VendingMachine.Services
 
             if (changeAmount < 0)
             {
-                throw new Exception($"{nameof(changeAmount)} value is negative.");
+                throw new Exception(message: $"{nameof(changeAmount)} value is negative.");
             }
 
             var nonFloatingChangeAmount = changeAmount * 100;
-            for (int c = 0; c < coinDenominations.Length; c++)
+            for (var c = 0; c < coinDenominations.Length; c++)
             {
                 var coin = coinDenominations[c];
-                while(nonFloatingChangeAmount >= coin)
+                while (nonFloatingChangeAmount >= coin)
                 {
-                    coins.Add(coin);
+                    coins.Add(item: coin);
                     nonFloatingChangeAmount -= coin;
                 }
 
@@ -54,7 +51,7 @@ namespace Koderex.TechnicalAssessment.VendingMachine.Services
                     break;
                 }
             }
-            
+
 
             return coins;
         }

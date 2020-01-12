@@ -6,10 +6,7 @@ namespace Koderex.TechnicalAssessment.VendingMachine.Services
     {
         private readonly int[] _coinDenominations;
 
-        public CurrencyConfigService(int[] coinDenominations)
-        {
-            _coinDenominations = coinDenominations;
-        }
+        public CurrencyConfigService(int[] coinDenominations) => _coinDenominations = coinDenominations;
 
         public int[] GetCoinDenominations() => _coinDenominations;
     }
